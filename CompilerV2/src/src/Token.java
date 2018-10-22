@@ -1,11 +1,22 @@
 package src;
 
+import org.json.simple.JSONObject;
+
 public class Token {
 
 	String s1;
 	String s2;
 	int     i;
 	
-	Token = "{" +s1 + " " + s2 + " " + i "}";
+	public static void Token ( String s1, String s2, int i ){
+		
+		String message;
+		JSONObject json = new JSONObject();
+		json.put( "rule",  s1 );
+		json.put( "token",  s2 );
+		json.put( "priority",  i );
+		
+	}
+	
 	
 }

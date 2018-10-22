@@ -6,9 +6,19 @@ public class Start {
 	
 	public static void main( String[] args ) {
 		
-		GenTokenRules rules = new GenTokenRules();
-		int rulesAmount = rules.length;
-		GenTokens tokens[] = new GenTokens[]( rules );
+		// Generates three arrays of rules, tokens, and priorities. 
+		GenRules RulesGenerated = new GenRules();
+		System.out.println( RulesGenerated.printRules() );
+		
+		
+		// Generates an array of token objects containing all three attributes.
+		String[] rules = RulesGenerated.returnRules();
+		String[] tokens = RulesGenerated.returnTokens();
+		int[] priorities = RulesGenerated.returnPriorities();
+		GenTokens tokens[];
+		for( int i = 0; i < rules.length; i++ ) {
+			tokens[i] = new GenTokens( rules );
+		}
 		
 	}
 
