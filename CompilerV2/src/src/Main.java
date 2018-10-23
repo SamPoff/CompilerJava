@@ -2,6 +2,7 @@ package src;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -15,7 +16,7 @@ public class Main {
 	
 	private static String path = "/Users/sp31485/git/CompileAnew/Compiler_WorkYouFrig/src/test.c";
 	
-	public static void main( String[] args ) {
+	public static void main( String[] args ) throws Exception {
 		
 		// GenRules contains three arrays, one with the lexemes, another with their
 		// corresponding tokens, and another with their priorities. They are separate
@@ -27,26 +28,8 @@ public class Main {
 		for( int i = 0; i < length; i++ ) 
 			tok[i] = Token.makeToken( GenRules.rules[i], GenRules.tokens[i], GenRules.priorities[i] );
 		
-		// Open input file and generate an input stream.
-		File file = new File( path );
-		FileInputStream fInputStream = null;
-
-		try {
-			fInputStream = new FileInputStream( file );
-			Lexer lexer = new Lexer( fInputStream );
-			
-					
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if ( fInputStream != null )
-					fInputStream.close();
-			} catch ( IOException ex ) {
-				ex.printStackTrace();
-			}
-		}
-//		Lexer lex = new Lexer( tok, path );
+		Lexer lex = new Lexer( );
+		lex.inputLexData(path);
 		
 	}
 

@@ -2,9 +2,14 @@
 package src;
 
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,41 +21,33 @@ import java.util.Map;
  */
 public class Lexer {
 	
-	public Token token;
+	public Token tokenCurrent;
 	public String[] rule;
-	public int location;
+	public String[] token;
 	public int[] priority;
+	public int start;
+	public int stop;
+	public String lexSubject;
 
 	public Lexer() {
 		// Lonely
 	}
 	
-//	public Lexer( Token tok, String path ) {
-//		int index = 1;
-//		List<String> regexParts = new ArrayList<String> ();
-//		Map<String, String> groupType = new HashMap<String, String>();
-//		Map<String, String> priorityDict = new HashMap<String, String>();
-//		
-//		for( String rules : tok.rules ) {
-//			for( String tokens : tok.tokens ) {
-//				for( int priority : tok.priorities ) {
-//					String groupname = "GROUP%s" % index;
-//					regexParts.
-//				}
-//			}
-//		}
-	
-	public Lexer( Token tok, String path ) {
-		token = tok;
+	public Lexer( Token tok, String path ) throws Exception {
+		tokenCurrent = tok;
 		rule = tok.returnRules();
-		location = 0;
+		token = tok.returnTokens();
 		priority = tok.returnPriorities();
-		
+		start = 0;
+		stop = 0;
+		lexSubject = inputLexData_RemoveWhiteSpace( path );
 	}
-	
-	public void inputLexData( String path ) throws FileNotFoundException {
-		File file = new File( path );
-		FileInputStream fInStream = new FileInputStream( file );
-	}
+
+	public String inputLexData_RemoveWhiteSpace( String path ) throws IOException { 
+		String data = ""; 
+		data = new String( Files.readAllBytes( Paths.get( path ) ) );
+		data = data.replaceAll( "\\s", "" );
+		return data;
+	} 
 	
 }
