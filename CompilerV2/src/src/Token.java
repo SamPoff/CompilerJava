@@ -8,7 +8,7 @@ package src;
  *a struct which contains one rule, one token, and one priority level.
  *</p>
  */
-public class Token {
+public class Token extends GenRules {
 
 	private String rule;
 	private String token;
@@ -78,9 +78,9 @@ public class Token {
 	 */
 	public static void printTokens( Token[] ti ) {
 		for( Token t : ti ) {
-			System.out.print( t.getRule( t ) + " " );
-			System.out.print( t.getToken( t ) + " " );
-			System.out.print( t.getPriority( t ) + "\n" );
+			System.out.print( Token.getRule( t ) + " " );
+			System.out.print( Token.getToken( t ) + " " );
+			System.out.print( Token.getPriority( t ) + "\n" );
 		}
 	}
 
