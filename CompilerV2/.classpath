@@ -4,5 +4,14 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="/Users/sp31485/git/CompilerJava/CompilerV2/lib/json-20180813.jar"/>
 	<classpathentry kind="lib" path="/Users/sp31485/git/CompilerJava/CompilerV2/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/sp31485/.m2/repository/com/typesafe/config/1.2.1/config-1.2.1.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="com.typesafe"/>
+			<attribute name="maven.artifactId" value="config"/>
+			<attribute name="maven.version" value="1.2.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
