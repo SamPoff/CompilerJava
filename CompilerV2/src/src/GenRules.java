@@ -15,35 +15,39 @@ public class GenRules {
 	 * Regex comparison to a given token.
 	 */
 	public static String[] rules = { // 25 rules
-			"/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/"        ,
-			"d+"  ,"int","char","main"                       ,"return",
-			"else","if" ,"for" ,"[_a-zA-Z][_a-zA-Z0-9]{0,31}","{"     ,
-			"}"   ,";"  ,"<="  ,"<"                          ,">="    ,
-			">"   ,"+"  ,"-"   ,"*"                          ,"/"     ,
-			"("   ,")"  ,"=="  ,"="
-			};	
+			"/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/","d+","int","char","main",
+			"return","else","if" ,"for" ,"[_a-zA-Z][_a-zA-Z0-9]{0,31}","{","}",";","<=",
+			"<",">=",">","+","-","*","/","(",")","==","="};	
+	
+	/**
+	 * Ascribes a length to each token.
+	 */
+	public static int[] tokenLengths = { // 25 lengths
+			48,2,3,4,4,6,4,2,3,27,1,1,1,2,1,2,1,1,1,1,1,1,1,2,1};
+	
+	/**
+	 * Ascribes a length to each token.
+	 */
+	public static boolean[] isRegex = { // 25 lengths
+			true,true,false,false,false,false,false,false,false,
+			true,false,false,false,false,false,false,false,false,
+			false,false,false,false,false,false,false
+	};
 	
 	/**
 	 * Token issued to token at corresponding index.
 	 */
 	public static String[] tokens = { // 25 tokens
-			"COMMENT"         ,"NUMBER"     ,"TYPE_INT" ,"TYPE_CHAR"    ,"MAIN",
-			"RETURN"          ,"ELSE"       ,"IF"       ,"FOR"          ,"IDENTIFIER",
-			"LB"              ,"RB"         ,"SEMICOLON","LESSTHANEQUAL","LESSTHAN",
-		    "GREATERTHANEQUAL","GREATERTHAN","PLUS"     ,"MINUS"        ,"MULTIPLY",
-			"DIVIDE"          ,"LP"         ,"RP"       ,"EQUALVALUE"   ,"EQUALSIGN"
-	        };
+			"COMMENT","NUMBER","TYPE_INT","TYPE_CHAR","MAIN","RETURN","ELSE","IF",
+			"FOR","IDENTIFIER","LB","RB","SEMICOLON","LESSTHANEQUAL","LESSTHAN",
+			"GREATERTHANEQUAL","GREATERTHAN","PLUS","MINUS","MULTIPLY","DIVIDE","LP",
+			"RP","EQUALVALUE","EQUALSIGN"};
 	
 	/**
 	 * Priority issued to a corresponding token. 
 	 */
 	public static int[] priorities = { // 25 priorities
-			-1,60,60, 5,-1,
-			5 ,10,10,10, 8,
-			9 ,10,70,20,20,
-			20,20,70,70,65,
-			65,40,40,20,30 
-			};
+			-1,60,60, 5,-1,5 ,10,10,10, 8,9 ,10,70,20,20,20,20,70,70,65,65,40,40,20,30};
 	
 	/**
 	 * Prints how may tokens are currently defined. If there is a mismatch in how
@@ -91,3 +95,19 @@ public class GenRules {
 	}
 	
 }
+
+
+// Raw token data
+
+//"/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/",    "d+",     "int",     "char","main","return","else","if","for","[_a-zA-Z][_a-zA-Z0-9]{0,31}", "{", "}",        ";",           "<=",       "<",              ">=",          ">",   "+",    "-",       "*",     "/", "(", ")",        "==",        "="};	
+//                                                48,       2,         3,          4,     4,       6,     4,   2,    3,                           27,   1,   1,          1,              2,         1,                 2,            1,     1,      1,         1,       1,   1,   1,           2,          1};
+//                                                 1,       1,         0,          0,     0,       0,     0,   0,    0,                            1,   0,   0,          0,              1,         0,                 0,            0,     0,      0,         0,       0,   0,   0,           0,          0};
+//                                         "COMMENT","NUMBER","TYPE_INT","TYPE_CHAR","MAIN","RETURN","ELSE","IF","FOR",                 "IDENTIFIER","LB","RB","SEMICOLON","LESSTHANEQUAL","LESSTHAN","GREATERTHANEQUAL","GREATERTHAN","PLUS","MINUS","MULTIPLY","DIVIDE","LP","RP","EQUALVALUE","EQUALSIGN"};
+//                                                -1,      60,        60,          5,    -1,       5,    10,  10,   10,                            8,   9,  10,         70,             20,        20,                20,           20,    70,     70,        65,      65,  40,  40,          20,         30};
+
+
+
+
+
+
+

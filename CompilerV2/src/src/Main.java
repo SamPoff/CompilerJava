@@ -5,8 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
-
 /**
  * @author sp31485
  *Starting point for TB compiler. Alter 'path' variable to your input '.c' file.
@@ -14,7 +12,7 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 
 public class Main {
 	
-	private static String path = "/Users/sp31485/git/CompileAnew/Compiler_WorkYouFrig/src/test.c";
+	private static String path = "/Users/sp31485/git/CompilerJava/CompilerV2/lib/test.c";
 	
 	public static void main( String[] args ) throws Exception {
 		
@@ -25,11 +23,13 @@ public class Main {
 		
 		// Generates an array of token objects containing all three attributes. 
 		Token[] tok = new Token[ length ]; 
-		for( int i = 0; i < length; i++ ) 
-			tok[i] = Token.makeToken( GenRules.rules[i], GenRules.tokens[i], GenRules.priorities[i] );
+		for( int i = 0; i < length; i++ ) {
+			tok[i] = Token.makeToken( GenRules.rules[i],      GenRules.tokens[i],
+								      GenRules.priorities[i], GenRules.isRegex[i] );
+		}
 		
-		Lexer lex = new Lexer( );
-		lex.inputLexData(path);
+		Lexer lex = new Lexer( tok, path );
+
 		
 	}
 

@@ -1,5 +1,8 @@
 package src;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author sp31485
  *<p>
@@ -10,9 +13,11 @@ package src;
  */
 public class Token extends GenRules {
 
-	private String rule;
-	private String token;
-	private int priority;
+	public String literal;
+	public String token;
+	public int priority;
+	public boolean isRegex;
+	public List<Integer> locations = new LinkedList();
 	
 	public Token() {
 		// Empty like my heart.
@@ -24,10 +29,11 @@ public class Token extends GenRules {
 	 * @param s2 token
 	 * @param i priority
 	 */
-	public Token( String s1, String s2, int i ) {
-		rule = s1;
+	public Token( String s1, String s2, int i, boolean isRegex ) {
+		literal = s1;
 		token = s2;
 		priority = i;
+		isRegex = isRegex;
 	}
 
 	/**
@@ -39,8 +45,8 @@ public class Token extends GenRules {
 	 * @param i
 	 * @return Returns a formed token object.
 	 */
-	public static Token makeToken( String s1, String s2, int i ) {
-		Token t = new Token( s1, s2, i );
+	public static Token makeToken( String s1, String s2, int i, boolean isRegex ) {
+		Token t = new Token( s1, s2, i, isRegex );
 		return t;
 	}
 	
@@ -49,8 +55,8 @@ public class Token extends GenRules {
 	 * @param t
 	 * @return
 	 */
-	public static String getRule( Token t ) {
-		return t.rule.toString();
+	public static String getLiteral( Token t ) {
+		return t.literal.toString();
 	}
 	
 	/**
@@ -78,7 +84,7 @@ public class Token extends GenRules {
 	 */
 	public static void printTokens( Token[] ti ) {
 		for( Token t : ti ) {
-			System.out.print( Token.getRule( t ) + " " );
+			System.out.print( Token.getLiteral( t ) + " " );
 			System.out.print( Token.getToken( t ) + " " );
 			System.out.print( Token.getPriority( t ) + "\n" );
 		}

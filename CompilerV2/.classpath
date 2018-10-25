@@ -13,7 +13,6 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/sp31485/git/CompilerJava/CompilerV2/lib/antlr-4.5.3-complete.jar"/>
 	<classpathentry kind="lib" path="/Users/sp31485/git/CompilerJava/CompilerV2/lib/commons-lang3-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
