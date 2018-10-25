@@ -26,7 +26,7 @@ public class GenRules {
 			48,2,3,4,4,6,4,2,3,27,1,1,1,2,1,2,1,1,1,1,1,1,1,2,1};
 	
 	/**
-	 * Ascribes a length to each token.
+	 * Identifies if a token contains a regex value.
 	 */
 	public static boolean[] isRegex = { // 25 lengths
 			true,true,false,false,false,false,false,false,false,
@@ -35,7 +35,7 @@ public class GenRules {
 	};
 	
 	/**
-	 * Token issued to token at corresponding index.
+	 * Token issued to literal at corresponding index.
 	 */
 	public static String[] tokens = { // 25 tokens
 			"COMMENT","NUMBER","TYPE_INT","TYPE_CHAR","MAIN","RETURN","ELSE","IF",
@@ -52,6 +52,7 @@ public class GenRules {
 	/**
 	 * Prints how may tokens are currently defined. If there is a mismatch in how
 	 * many tokens there are in comparison to priorities or rules it will return '0'.
+	 * @return
 	 */
 	public static int length() {
 		if( priorities.length == tokens.length && tokens.length == rules.length )
@@ -61,6 +62,7 @@ public class GenRules {
 	
 	/**
 	 * Returns all of the rules components in array form.
+	 * @return
 	 */
 	public static String[] returnRules() {
 		return rules;
@@ -69,6 +71,7 @@ public class GenRules {
 	
 	/**
 	 * Returns all of the token components in array form.
+	 * @return
 	 */
 	public static String[] returnTokens() {
 		return tokens;
@@ -77,6 +80,7 @@ public class GenRules {
 	
 	/**
 	 * Returns all of the priorities in array form.
+	 * @return
 	 */
 	public static int[] returnPriorities() {
 		return priorities;
@@ -84,7 +88,8 @@ public class GenRules {
 	}
 	
 	/**
-	 * Prints the rule followed by token, followed by priority. Isn't formatted very well. 
+	 * Prints the rule followed by token, followed by priority. Isn't formatted very well.
+	 * @return
 	 */
 	public static String printRules(  ) {
 		String out = "";

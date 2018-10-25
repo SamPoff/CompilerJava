@@ -28,8 +28,12 @@ public class Main {
 								      GenRules.priorities[i], GenRules.isRegex[i] );
 		}
 		
+		// Returns a lex of all of the previously created tokens. 
+		// Still not sure if this will be an array of LexemeToken 
+		// objects or not. 
 		Lexer lex = new Lexer( tok, path );
 
+		//TODO: Finish creating lexer tokens and begin work on building AST and tree walker. 
 		
 	}
 

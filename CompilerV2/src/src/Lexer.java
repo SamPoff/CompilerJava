@@ -1,27 +1,13 @@
 
 package src;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Queue;
 
 /**
  * @author sp31485
- *Entrence point for lexer. Should return a token, it's value (rule), location, and priority. 
+ *Entrance point for lexer. Should return a token, it's value (rule), location, and priority. 
  */
 public class Lexer {
 	
@@ -33,10 +19,21 @@ public class Lexer {
 	public int stop = 0;
 	public String lexSubject;
 
+	/**
+	 * Default constructor, probably won't be used.
+	 */
 	public Lexer() {
 		// Lonely
 	}
 	
+	/**
+	 * Actual constructor, takes in rule tokens and runs them through the lexer.
+	 * The result should be enhanced LexemeTokens with location data and literal
+	 * values for regex's.
+	 * @param tok
+	 * @param path
+	 * @throws Exception
+	 */
 	public Lexer( Token[] tok, String path ) throws Exception {
 		tokenCurrent = tok;
 		lexSubject = inputLexData_RemoveWhiteSpace( path );
@@ -50,6 +47,12 @@ public class Lexer {
 		}
 	}
 
+	/**
+	 * Removes white space and returns string. 
+	 * @param path
+	 * @return
+	 * @throws IOException
+	 */
 	public String inputLexData_RemoveWhiteSpace( String path ) throws IOException { 
 		String data = ""; 
 		data = new String( Files.readAllBytes( Paths.get( path ) ) );
@@ -73,6 +76,15 @@ public class Lexer {
 //		}
 //	}
 	
+	//TODO: Should output something like:
+	// Literal "int", at: 2, 4, 5, etc...
+	// Need to fix regex to get back initial value that the regex is recognizing. 
+	
+	/**
+	 * Should return an array of LexemeTokens.
+	 * @param data
+	 * @param tok
+	 */
 	public static void lexData( String data, Token[] tok ) {
 			for( int i = 0; i < data.length(); i++ ) {
 				for( Token t: tok ) {
