@@ -17,7 +17,7 @@ public class Token extends GenRules {
 	public String token;
 	public int priority;
 	public boolean isRegex;
-	public List<Integer> locations = new LinkedList();
+	public List<Integer> locations = new LinkedList<Integer>();
 	
 	public Token() {
 		// Empty like my heart.
@@ -33,7 +33,7 @@ public class Token extends GenRules {
 		literal = s1;
 		token = s2;
 		priority = i;
-		isRegex = isRegex;
+		this.isRegex = isRegex;
 	}
 
 	/**
